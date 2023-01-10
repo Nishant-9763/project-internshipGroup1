@@ -27,12 +27,11 @@ const createIntern = async function(req, res) {
         if (!collegeName) return res.status(400).send({status: false, msg: 'college name is required'});
         if (!validName(collegeName)) return res.status(400).send({status: false, msg: 'please enter a valid college name'});
         const college = await collegeModel.findOne({name: collegeName});
-        if (!college) return res.status(400).send({status: false, msg: 'collge does not exits with this name'});
+        if (!college) return res.status(400).send({status: false, msg: 'college does not exits with this name'});
 
         data.collegeId = college._id;
 
         const internCreated = await internModel.create(data);
-
         res.status(201).send({status: true, data: internCreated});
     } catch (error) {
         res.status(500).send({status: false, msg: error.message});
