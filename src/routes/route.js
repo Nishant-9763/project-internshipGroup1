@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-const collegeController = require('../controllers/collegeController');
-const internController = require('../controllers/internController');
+const {createCollege, getCollege} = require('../controllers/collegeController');
+const {createIntern} = require('../controllers/internController');
 
-router.post('/functionup/colleges', collegeController.createCollege);
-router.post('/functionup/interns', internController.createIntern);
-router.get('/functionup/collegeDetails', collegeController.getCollege);
+router.post('/functionup/colleges', createCollege);
+router.post('/functionup/interns', createIntern);
+router.get('/functionup/collegeDetails', getCollege);
 
 router.all('/*', function (req, res) {
     res.status(404).send({status: false, msg: 'page not found'});
