@@ -1,4 +1,4 @@
-const validInternName = (name) => (/^[a-zA-Z]{3,20}$/).test(name);
+const validInternName = (name) => (/^[a-zA-Z_ ]{3,20}$/).test(name);
 const validEmail = (mail) => (/.+\@.+\..+/).test(mail);
 const validNumber = (number) => (/^[6-9]{1}?[0-9]{9}$/).test(number);
 
