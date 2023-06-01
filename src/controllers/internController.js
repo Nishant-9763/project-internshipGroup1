@@ -25,7 +25,7 @@ const createIntern = async function(req, res) {
 
         if (!collegeName) return res.status(400).send({status: false, msg: 'college name is required'});
         if (!validCollegeName(collegeName)) return res.status(400).send({status: false, msg: 'please enter a valid college name'});
-        const college = await collegeModel.findOne({name: collegeName});
+        const college = await collegeModel.findOne({name: collegeName,isDeleted:false});
         if (!college) return res.status(400).send({status: false, msg: 'collge does not exits with this name'});
 
         data.collegeId = college._id;
